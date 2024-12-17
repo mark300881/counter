@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Countdown</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: transparent;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            font-size: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #timer {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">59:00</div>
+    <script>
+        let totalSeconds = 59 * 60; // Startzeit: 59 Minuten
+
+        function updateTimer() {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+
+            document.getElementById("timer").textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+            if (totalSeconds > 0) {
+                totalSeconds--;
+            } else {
+                document.getElementById("timer").textContent = "Stream offline!";
+            }
+        }
+
+        setInterval(updateTimer, 1000); // Jede Sekunde aktualisieren
+    </script>
+</body>
+</html>
